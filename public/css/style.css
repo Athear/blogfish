@@ -1,0 +1,37 @@
+:root{
+    --header-background:rgb(66, 20, 36);
+    --body-bakground: rgb(179, 212, 181);
+}
+
+body{
+    background-color: var(--body-bakground);
+}
+
+.navbar{
+    background-color: var(--header-background);
+    height: 100px;
+}
+
+.nav-item{
+    display:inline-block;
+    margin-top:10px;
+    margin-right:3%;
+    color:var(--body-bakground)
+}
+
+.nav-link{
+    color:var(--body-bakground)
+}
+.nav-link:visited{
+    color:var(--body-bakground)
+}
+
+.page-title{
+    background-color: var(--body-bakground);
+    /* color: var(--header-background); */
+    padding:10px 16px; 
+    margin:30px;
+    text-align: left;
+    border-radius: 10px;
+    box-shadow: gray 4px 3px;
+}
