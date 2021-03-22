@@ -7,9 +7,16 @@ body{
     background-color: var(--body-bakground);
 }
 
-.navbar{
+.banner{
     background-color: var(--header-background);
+    color:var(--body-bakground);
     height: 100px;
+}
+
+.sub-banner{
+    background-color: var(--header-background);
+    color:var(--body-bakground);
+    margin:10px
 }
 
 .nav-item{
@@ -28,7 +35,7 @@ body{
 
 .page-title{
     background-color: var(--body-bakground);
-    /* color: var(--header-background); */
+    color: var(--header-background);
     padding:10px 16px; 
     margin:30px;
     text-align: left;
