@@ -31,8 +31,8 @@ Article.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: 'article',
   }
 );
 
-module.exports = User;
+module.exports = Article;
