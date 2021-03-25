@@ -4,7 +4,7 @@ const { Article,User } = require('../../models');
 router.get('/', async (req, res) => {
     try{
     const articles = await Article.findAll({
-      include:[{model:User}]
+      include:[{model:User,attributes:['name']}]
     });
     res.status(200).json(articles);
     }
