@@ -25,7 +25,7 @@ router.post('/login', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
       
-      res.json({ user: userData, message: 'You are now logged in!' });
+      return res.json({ user: userData, message: 'You are now logged in!' });
     });
 
   } catch (err) {
@@ -42,7 +42,7 @@ router.post('/signup', async (req,res)=>{
       req.session.user_id = newUser.id;
       req.session.logged_in = true;
        
-    res.json({ user: newUser, message: 'Sign-up successful!'});
+    return res.json({ user: newUser, message: 'Sign-up successful!'});
     })
   }
   catch{
