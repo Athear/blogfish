@@ -1,6 +1,10 @@
 module.exports = {
 
 
+  dateFormat:(dateString)=>{
+    const fullDate = new Date(dateString);
+    return fullDate.toLocaleDateString();
+  }
 
     
     // get_emoji: () => {
