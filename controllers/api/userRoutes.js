@@ -33,6 +33,24 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.post('/signup', async (req,res)=>{
+  const {name, email, password} = req.body;
+  try{
+    const newUser = await User.create({name,email,password})
+    
+    req.session.save(() => {
+      req.session.user_id = newUser.id;
+      req.session.logged_in = true;
+       
+    res.json({ user: newUser, message: 'Sign-up successful!'});
+    })
+  }
+  catch{
+    console.log(err)
+    res.status(400).json(err);
+  }
+})
+
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
