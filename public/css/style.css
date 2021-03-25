@@ -10,7 +10,7 @@ body{
 .page-title{
     background-color: var(--body-bakground);
     color: var(--header-background);
-    padding:10px 16px; 
+    padding:2px 16px; 
     margin:30px;
     text-align: left;
     border-radius: 10px;
@@ -20,13 +20,14 @@ body{
 .banner{
     background-color: var(--header-background);
     color:var(--body-bakground);
-    height: 100px;
+    height: 105px;
 }
 
 
 .sub-banner{
     background-color: var(--header-background);
     color:var(--body-bakground);
+    height: 30px;
 }
 
 
