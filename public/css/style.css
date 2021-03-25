@@ -28,6 +28,9 @@ body{
     background-color: var(--header-background);
     color:var(--body-bakground);
     height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    padding: 0 1%;
 }
 
 
@@ -43,6 +46,16 @@ body{
     border-color:var(--header-background);
 }
 
+.article-body p{
+    margin: 1%
+}
+
+.article-author{
+    float: right;
+    color:gray;
+    font-size: 55%;
+    font-weight: normal;
+}
 
 .nav-item{
     display:inline-block;
