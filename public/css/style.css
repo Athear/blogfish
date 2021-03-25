@@ -7,17 +7,41 @@ body{
     background-color: var(--body-bakground);
 }
 
+.page-title{
+    background-color: var(--body-bakground);
+    color: var(--header-background);
+    padding:10px 16px; 
+    margin:30px;
+    text-align: left;
+    border-radius: 10px;
+    box-shadow: gray 4px 3px;
+}
+
 .banner{
     background-color: var(--header-background);
     color:var(--body-bakground);
     height: 100px;
 }
 
+
 .sub-banner{
     background-color: var(--header-background);
     color:var(--body-bakground);
-    margin:10px
 }
+
+
+.article-container{
+    padding-left: 5%;
+    padding-right: 5%;
+
+}
+
+.article-body{
+    margin-top:10px;
+    border-style: solid;
+    border-color:var(--header-background);
+}
+
 
 .nav-item{
     display:inline-block;
@@ -33,12 +57,5 @@ body{
     color:var(--body-bakground)
 }
 
-.page-title{
-    background-color: var(--body-bakground);
-    color: var(--header-background);
-    padding:10px 16px; 
-    margin:30px;
-    text-align: left;
-    border-radius: 10px;
-    box-shadow: gray 4px 3px;
-}
+
+
