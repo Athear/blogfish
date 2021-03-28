@@ -38,7 +38,9 @@
     {{{ body }}}
   </main>
   <footer>
-      
+    {{#if logged_in}}
+      <button class="post">+ New Post</button>
+    {{/if}}
   </footer>
 
   {{#if logged_in}}
