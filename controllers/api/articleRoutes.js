@@ -14,6 +14,18 @@ router.get('/', async (req, res) => {
     }
   });
 
+  router.get('/:id/comments', async (req, res) => {
+    try{
+    const articleComments = await Article.findByPk(req.params.id,{
+      include:[{model:Comment,attributes:['content']}]
+    });
+    res.status(200).json(articleComments);
+    }
+    catch(err){
+      res.status(500).json(err);
+    }
+  });
+
 router.post('/', async (req,res)=>{
   const { title, content } = req.body;
   try{
