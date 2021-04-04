@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Article,User } = require('../../models');
+const { Article,User,Comment } = require('../../models');
 
 router.get('/', async (req, res) => {
     try{
@@ -14,14 +14,15 @@ router.get('/', async (req, res) => {
     }
   });
 
-  router.get('/:id/comments', async (req, res) => {
+  router.get('/:id', async (req, res) => {
     try{
     const articleComments = await Article.findByPk(req.params.id,{
-      include:[{model:Comment,attributes:['content']}]
+      include:[{model:Comment, order:[['created_at','ASC']]}]
     });
     res.status(200).json(articleComments);
     }
     catch(err){
+      console.log(err)
       res.status(500).json(err);
     }
   });
