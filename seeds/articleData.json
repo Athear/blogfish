@@ -1,17 +1,17 @@
 [
-{
-    "title":"Test Title",
-    "content":"I made a post!",
-    "user_id":"1"
-},
-{
-    "title":"Here we go",
-    "content":"lets get this started",
-    "user_id":"2"
-},
-{
-    "title":"second post!",
-    "content":"Made another!",
-    "user_id":"1"
-}
+    {
+        "title": "Test Title",
+        "content": "I made a post!",
+        "user_id": "1"
+    },
+    {
+        "title": "Here we go",
+        "content": "lets get this started",
+        "user_id": "2"
+    },
+    {
+        "title": "second post!",
+        "content": "Made another!",
+        "user_id": "1"
+    }
 ]
