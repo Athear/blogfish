@@ -1,6 +1,8 @@
 const router = require('express').Router();
-const { User,Article } = require('../models');
+const { User,Article,Comment } = require('../models');
 const withAuth = require('../utils/auth');
+const mainTitle = 'Blogfish'
+
 
 router.get('/', withAuth, async (req, res) => {
   try {
@@ -14,7 +16,7 @@ router.get('/', withAuth, async (req, res) => {
     res.render('homepage', {
       articleArray,
       logged_in: req.session.logged_in,
-      title:'Blogfish'
+      title:mainTitle
     });
   } catch (err) {
     res.status(500).json(err);
@@ -45,7 +47,7 @@ router.get('/newpost', withAuth, async (req, res) => {
   try {
     res.render('post', {
       logged_in: req.session.logged_in,
-      title:'Blogfish'
+      title: mainTitle
     });
   } catch (err) {
     res.status(500).json(err);
@@ -60,5 +62,27 @@ router.get('/login', (req, res) => {
 
   res.render('login',{title:'Blogfish'});
 });
+
+router.get('/:id', withAuth, async (req, res) => {
+  try {
+    const articleComments = await Article.findByPk(req.params.id,{
+      include:[{model:Comment, order:[['created_at','ASC']]}]
+    });
+
+    const article = articleComments.get({ plain: true });
+    const commentArray= articleComments.comments.map((article) => article.get({ plain: true }));
+
+    res.render('single-article', {
+      article,
+      commentArray,
+      logged_in: req.session.logged_in,
+      title:mainTitle
+    });
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;
