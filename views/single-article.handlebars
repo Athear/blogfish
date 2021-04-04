@@ -1,9 +1,7 @@
 <div class="article-container">
-    {{#each articleArray}}
-    {{> article}}
-    {{/each}}
+    {{> article article}}
 
     {{#each commentArray}}
-    {{> comment}}
+    {{> comment commentArray=commentArray}}
     {{/each}}
 </div>

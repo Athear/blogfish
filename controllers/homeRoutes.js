@@ -66,7 +66,9 @@ router.get('/login', (req, res) => {
 router.get('/:id', withAuth, async (req, res) => {
   try {
     const articleComments = await Article.findByPk(req.params.id,{
-      include:[{model:Comment, order:[['created_at','ASC']]}]
+      include:[{model:Comment,
+         include:{model:User}, 
+         order:[['created_at','ASC']]}]
     });
 
     const article = articleComments.get({ plain: true });

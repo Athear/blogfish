@@ -17,7 +17,9 @@ router.get('/', async (req, res) => {
   router.get('/:id', async (req, res) => {
     try{
     const articleComments = await Article.findByPk(req.params.id,{
-      include:[{model:Comment, order:[['created_at','ASC']]}]
+      include:[{model:Comment,
+         include:{model:User}, 
+         order:[['created_at','ASC']]}]
     });
     res.status(200).json(articleComments);
     }
