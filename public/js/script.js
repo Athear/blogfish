@@ -24,9 +24,18 @@ const createPost = async (event)=>{
         alert("Your post needs both a title and some content!")
     }
     
+}
 
-
+function goToArticle(event){
+    let articleID
+    if(event.target.getAttribute("class")!=="article-body"){
+        articleID = event.target.parentElement.getAttribute('data-article-num');
+    }else{
+        articleID = event.target.getAttribute('data-article-num');
+    }
+    console.log(articleID)
 }
 
 document.querySelector('.post').addEventListener('click', newPost);
+document.querySelectorAll('.article-body').forEach(ele=>ele.addEventListener('click', goToArticle,true));
 document.querySelector('#post-submit').addEventListener('click', createPost);
