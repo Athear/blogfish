@@ -42,7 +42,7 @@ router.post('/', async (req,res)=>{
 });
 
 
-router.get('/:id/comments', async (req, res) => {\
+router.post('/:id/comments', async (req, res) => {
   const content = req.body.content
   const user_id = req.session.logged_in
   const article_id = req.params.id
