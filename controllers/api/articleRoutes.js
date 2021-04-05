@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
     }
   });
 
-  router.get('/:id', async (req, res) => {
+  router.get('/:id/comments', async (req, res) => {
     try{
     const articleComments = await Article.findByPk(req.params.id,{
       include:[{model:Comment,
@@ -40,5 +40,23 @@ router.post('/', async (req,res)=>{
     res.status(500).json(err);
   }
 });
+
+
+router.get('/:id/comments', async (req, res) => {\
+  const content = req.body.content
+  const user_id = req.session.logged_in
+  const article_id = req.params.id
+  try{
+
+  const newComment = await Comment.create({ content,article_id,user_id})
+
+  res.status(200).json(newComment);
+  }
+  catch(err){
+    console.log(err)
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;
