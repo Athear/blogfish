@@ -27,13 +27,13 @@ const createPost = async (event)=>{
 }
 
 function goToArticle(event){
-    let articleID
+    let articleID = '/'
     if(event.target.getAttribute("class")!=="article-body"){
         articleID = event.target.parentElement.getAttribute('data-article-num');
     }else{
         articleID = event.target.getAttribute('data-article-num');
     }
-    console.log(articleID)
+    document.location.replace(articleID)
 }
 
 document.querySelector('.post').addEventListener('click', newPost);
