@@ -46,6 +46,7 @@ router.post('/:id/comments', async (req, res) => {
   const content = req.body.content
   const user_id = req.session.logged_in
   const article_id = req.params.id
+  console.log('here we are')
   try{
 
   const newComment = await Comment.create({ content,article_id,user_id})
