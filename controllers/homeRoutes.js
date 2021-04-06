@@ -65,6 +65,23 @@ router.get('/login', (req, res) => {
 
 router.get('/:id', withAuth, async (req, res) => {
   try {
+    const articleComments = await Article.findByPk(req.params.id);
+
+    const article = articleComments.get({ plain: true });
+
+    res.render('new-comment', {
+      article,
+      logged_in: req.session.logged_in,
+      title:mainTitle
+    });
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err);
+  }
+});
+
+router.get('/:id/comments', withAuth, async (req, res) => {
+  try {
     const articleComments = await Article.findByPk(req.params.id,{
       include:[{model:Comment,
          include:{model:User}, 
@@ -85,6 +102,7 @@ router.get('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 
 module.exports = router;
