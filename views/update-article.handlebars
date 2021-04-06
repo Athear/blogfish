@@ -1,0 +1,18 @@
+<h3 class="sub-banner">Edit Post</h3>
+
+<form class="form post-form">
+    <div class="form-group">
+        <label for="post-title">Title:</label>
+        <input class="form-input" type="text" name="post-title" id="post-title" value='{{{article.title}}}' />
+    </div>
+    <div class="form-group">
+        <label for="post-content">Content:</label>
+        <input class="form-input" type="text" name="post-content" id="post-content" value='{{{article.content}}}' />
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit" id="post-update">Update</button>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit" id="post-delete">Delete</button>
+    </div>
+</form>

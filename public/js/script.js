@@ -57,6 +57,10 @@ function goToArticle(event){
     }else{
         articleID = event.target.getAttribute('data-article-num');
     }
+    const currentPage = document.querySelector('.page-title').innerText
+    if(currentPage==='Dashboard'){
+        articleID = 'dashboard/'+articleID
+    }
     document.location.replace(articleID)
 }
 

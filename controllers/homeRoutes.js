@@ -103,6 +103,23 @@ router.get('/:id/comments', withAuth, async (req, res) => {
   }
 });
 
+router.get('/dashboard/:id', withAuth, async (req, res) => {
+  try {
+    const articleComments = await Article.findByPk(req.params.id);
 
+    const article = articleComments.get({ plain: true });
+
+//TODO: veify the post belongs to the editer
+
+    res.render('update-article', {
+      article,
+      logged_in: req.session.logged_in,
+      title:'Dashboard'
+    });
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
