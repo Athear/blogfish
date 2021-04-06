@@ -41,6 +41,18 @@ router.post('/', async (req,res)=>{
   }
 });
 
+router.put('/:id', async (req,res)=>{
+  const { title, content } = req.body;
+  try{
+    const article = await Article.update({title,content},{where:{Id:req.params.id}})
+    res.status(200).json(article);
+  }
+  catch(err){
+    console.log(err)
+    res.status(500).json(err);
+  }
+});
+
 
 router.post('/:id/comments', async (req, res) => {
   const content = req.body.content

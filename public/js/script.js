@@ -24,6 +24,28 @@ const createPost = async (event)=>{
     }
 }
 
+const updatePost = async (event)=>{
+    event.preventDefault();
+    const title = document.querySelector('#post-title').value.trim();
+    const content = document.querySelector('#post-content').value.trim();
+    const articleId = document.querySelector('.sub-banner').getAttribute('data-article-num')
+    
+    if (title && content) {
+        const response = await fetch('/api/article/'+articleId, {
+          method: 'PUT',
+          body: JSON.stringify({ title, content }),
+          headers: { 'Content-Type': 'application/json' },
+        });
+        console.log(response)
+        if (response.ok) {
+            // console.log("OKAY")
+            document.location.replace('/dashboard');
+        }
+    }else{
+        alert("Your post needs both a title and some content!")
+    }
+}
+
 const createComment = async (event)=>{
     event.preventDefault();
     console.log("here we are")
@@ -68,5 +90,7 @@ document.querySelector('.post').addEventListener('click', newPost);
 document.querySelectorAll('.article-body').forEach(ele=>ele.addEventListener('click', goToArticle));
 document.querySelector('#comment-submit').addEventListener('click', createComment);
 document.querySelector('#post-submit').addEventListener('click', createPost);
+document.querySelector('#post-update').addEventListener('click', updatePost);
+document.querySelector('#post-delete').addEventListener('click', deletePost);
 
 
