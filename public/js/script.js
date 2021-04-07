@@ -46,6 +46,24 @@ const updatePost = async (event)=>{
     }
 }
 
+const deletePost = async (event)=>{
+    event.preventDefault();
+    const verify = confirm("Are you sure you want to delete this post?");
+    if(verify){
+        const articleId = document.querySelector('.sub-banner').getAttribute('data-article-num')
+        const response = await fetch('/api/article/'+articleId, {
+            method: 'DELETE',
+        });
+        console.log(response)
+        if (response.ok) {
+            // console.log("OKAY")
+            document.location.replace('/dashboard');
+        }
+    }
+}
+
+
+
 const createComment = async (event)=>{
     event.preventDefault();
     console.log("here we are")
@@ -86,11 +104,11 @@ function goToArticle(event){
     document.location.replace(articleID)
 }
 
-document.querySelector('.post').addEventListener('click', newPost);
-document.querySelectorAll('.article-body').forEach(ele=>ele.addEventListener('click', goToArticle));
-document.querySelector('#comment-submit').addEventListener('click', createComment);
-document.querySelector('#post-submit').addEventListener('click', createPost);
-document.querySelector('#post-update').addEventListener('click', updatePost);
-document.querySelector('#post-delete').addEventListener('click', deletePost);
+if(document.querySelector('.post')){document.querySelector('.post').addEventListener('click', newPost);}
+if(document.querySelectorAll('.article-body')[0]){document.querySelectorAll('.article-body').forEach(ele=>ele.addEventListener('click', goToArticle));}
+if(document.querySelector('#comment-submit')){document.querySelector('#comment-submit').addEventListener('click', createComment);}
+if(document.querySelector('#post-submit')){document.querySelector('#post-submit').addEventListener('click', createPost);}
+if(document.querySelector('#post-update')){document.querySelector('#post-update').addEventListener('click', updatePost);}
+if(document.querySelector('#post-delete')){document.querySelector('#post-delete').addEventListener('click', deletePost);}
 
 
