@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS blogfish;
+CREATE DATABASE blogfish;
