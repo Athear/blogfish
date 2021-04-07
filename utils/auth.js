@@ -5,6 +5,14 @@ const withAuth = (req, res, next) => {
       next();
     }
   };
+
+const apiAuth = (req, res, next) => {
+  if (!req.session.logged_in) {
+    res.status(401).send('Unauthorized access to api');
+  } else {
+    next();
+  }
+};
   
-  module.exports = withAuth;
+  module.exports = { withAuth, apiAuth };
   

@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { Article,User,Comment } = require('../../models');
+const {apiAuth} = require('../../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/',apiAuth, async (req, res) => {
     try{
     const articles = await Article.findAll({
       include:[{model:User,attributes:['name']}],
@@ -14,7 +15,7 @@ router.get('/', async (req, res) => {
     }
   });
 
-  router.get('/:id/comments', async (req, res) => {
+  router.get('/:id/comments',apiAuth, async (req, res) => {
     try{
     const articleComments = await Article.findByPk(req.params.id,{
       include:[{model:Comment,
@@ -29,10 +30,11 @@ router.get('/', async (req, res) => {
     }
   });
 
-router.post('/', async (req,res)=>{
+router.post('/',apiAuth, async (req,res)=>{
   const { title, content } = req.body;
+  const user_id = req.session.user_id
   try{
-    const article = await Article.create({title,content})
+    const article = await Article.create({title,content,user_id})
     res.status(200).json(article);
   }
   catch(err){
@@ -41,7 +43,7 @@ router.post('/', async (req,res)=>{
   }
 });
 
-router.put('/:id', async (req,res)=>{
+router.put('/:id',apiAuth, async (req,res)=>{
   const { title, content } = req.body;
   try{
     const article = await Article.update({title,content},{where:{Id:req.params.id}})
@@ -54,7 +56,7 @@ router.put('/:id', async (req,res)=>{
 });
 
 
-router.post('/:id/comments', async (req, res) => {
+router.post('/:id/comments',apiAuth, async (req, res) => {
   const content = req.body.content
   const user_id = req.session.logged_in
   const article_id = req.params.id
@@ -71,7 +73,7 @@ router.post('/:id/comments', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req,res)=>{
+router.delete('/:id',apiAuth, async (req,res)=>{
   try{
     const article = await Article.destroy({where:{Id:req.params.id}})
     res.status(200).json(article);
