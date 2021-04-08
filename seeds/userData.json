@@ -1,7 +1,7 @@
 [
     {
-      "name": "Bob",
-      "email": "BobLogBlog@hotmail.com",
+      "name": "Litia",
+      "email": "LiteraryLitia@hotmail.com",
       "password": "password12345"
     },
     {
@@ -10,18 +10,18 @@
       "password": "password12345"
     },
     {
-      "name": "Crash",
-      "email": "CrashOverride@aol.com",
+      "name": "Local",
+      "email": "localhost@aol.com",
       "password": "password12345"
     },
     {
-      "name": "Ted",
-      "email": "theodorelogan@msn.com",
+      "name": "Morgan",
+      "email": "morania@msn.com",
       "password": "password12345"
     },
     {
       "name": "Bill",
-      "email": "bill.s.preston.esq@yahoo.com",
+      "email": "williamp@yahoo.com",
       "password": "password12345"
     }
   ]
