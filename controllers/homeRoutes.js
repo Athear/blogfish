@@ -63,7 +63,7 @@ router.get('/login', (req, res) => {
   res.render('login',{title:'Blogfish'});
 });
 
-router.get('/:id', withAuth, async (req, res) => {
+router.get('/home/:id', withAuth, async (req, res) => {
   try {
     const articleComments = await Article.findByPk(req.params.id);
 
@@ -80,7 +80,7 @@ router.get('/:id', withAuth, async (req, res) => {
   }
 });
 
-router.get('/:id/comments', withAuth, async (req, res) => {
+router.get('/home/:id/comments', withAuth, async (req, res) => {
   try {
     const articleComments = await Article.findByPk(req.params.id,{
       include:[{model:Comment,

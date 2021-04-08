@@ -82,7 +82,7 @@ const createComment = async (event)=>{
         console.log(response)
         if (response.ok) {
             // console.log("OKAY")
-            document.location.replace(`/${articleId}/comments`);
+            document.location.replace(`home/${articleId}/comments`);
         }
     }else{
         alert("Your comment needs some content!")
@@ -100,6 +100,8 @@ function goToArticle(event){
     const currentPage = document.querySelector('.page-title').innerText
     if(currentPage==='Dashboard'){
         articleID = 'dashboard/'+articleID
+    }else{
+        articleID = 'home/'+articleID
     }
     document.location.replace(articleID)
 }
